@@ -37,3 +37,17 @@ def test_creates_mock_for_specific_case():
     fake_diary.add(Mock())
     fake_diary.add(Mock())
     assert fake_diary.count_entries() == 2
+
+def test_creates_a_sophisticated_mock():
+    task_list = Mock()
+    task = Mock()
+
+    task_list.list.return_value = [task]
+    task_list.count.return_value = 1
+    task_list.clear.return_value = "success"
+
+    # Don't edit below
+    task_list.add(task)
+    assert task_list.list() == [task]
+    assert task_list.count() == 1
+    assert task_list.clear() == "success"
